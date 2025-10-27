@@ -7,8 +7,6 @@ import javax.swing.JOptionPane;
 
 public class Viedtalrunis {
 	
-	public int GB;
-	
 public static int skaitlaParbaude(String zinojums, int min, int max) {
 		
 		int skaitlis;
@@ -31,12 +29,6 @@ public static int skaitlaParbaude(String zinojums, int min, int max) {
 			}
 		}
 	}
-
-	public int izmers() {
-		this.GB = skaitlaParbaude("Kāds ir telefona izmērs?", 64, 1024);
-		
-		return GB;
-	}
 	
 	public static void main(String[] args) {
 		String izvele;
@@ -48,7 +40,10 @@ public static int skaitlaParbaude(String zinojums, int min, int max) {
 		// String[] atbilde = {"Jā", "Nē"};
 		ArrayList<Object> lietotnes = new ArrayList<>();
 		
-		
+		int GB;
+		do {
+			GB = skaitlaParbaude("Kāds ir telefona izmērs?", 64, 1024);
+		}while(GB == -1);
 		
 		do {
 			izvele = (String) JOptionPane.showInputDialog(null, "Izvēlies darbību",
@@ -61,25 +56,33 @@ public static int skaitlaParbaude(String zinojums, int min, int max) {
 			switch(izvelesID) {
 			
 			case 0:
-				
+				izvele = (String) JOptionPane.showInputDialog(null, "Izvēlies riteni",
+						"Izvēlne", JOptionPane.QUESTION_MESSAGE, null,
+						aplikacijas, aplikacijas[0]);
+				if (izvele == null)break;
 				break;
 			
 			case 1:
+				
 				break;
 			
 			case 2:
+				
 				break;
 			
 			case 3:
+				
 				break;
 			
 			case 4:
+				JOptionPane.showMessageDialog(null, "Programma apturēta", "Apturēta",
+						JOptionPane.PLAIN_MESSAGE);
 				break;
 			
 				
 			}
 			
-		}while(izvelesID != 5);
+		}while(izvelesID != 4);
 		
 	}
 

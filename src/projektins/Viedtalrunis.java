@@ -56,10 +56,13 @@ public static int skaitlaParbaude(String zinojums, int min, int max) {
 			switch(izvelesID) {
 			
 			case 0:
-				izvele = (String) JOptionPane.showInputDialog(null, "Izvēlies riteni",
-						"Izvēlne", JOptionPane.QUESTION_MESSAGE, null,
+				izvele = (String) JOptionPane.showInputDialog(null, "Kādu aplikāciju novilkt?",
+						"Izvēle", JOptionPane.QUESTION_MESSAGE, null,
 						aplikacijas, aplikacijas[0]);
 				if (izvele == null)break;
+				
+				
+				
 				break;
 			
 			case 1:

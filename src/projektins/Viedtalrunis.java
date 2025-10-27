@@ -1,10 +1,13 @@
 package projektins;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import javax.swing.JOptionPane;
 
 public class Viedtalrunis {
+	
+	public int GB;
 	
 public static int skaitlaParbaude(String zinojums, int min, int max) {
 		
@@ -29,8 +32,8 @@ public static int skaitlaParbaude(String zinojums, int min, int max) {
 		}
 	}
 
-	public static int izmers(int GB) {
-		GB = skaitlaParbaude("Kāds ir telefona izmērs?", 64, 1024);
+	public int izmers() {
+		this.GB = skaitlaParbaude("Kāds ir telefona izmērs?", 64, 1024);
 		
 		return GB;
 	}
@@ -39,12 +42,44 @@ public static int skaitlaParbaude(String zinojums, int min, int max) {
 		String izvele;
 		int izvelesID;
 		String[] darbibas = {"Novilkt aplikāciju", "Izdzēst aplikāciju",
-				"Aplikāciju saraksts", "Kārtot pēc cenas", "Izsaukt metodi",
+				"Aplikāciju saraksts", "Izsaukt metodi",
 				"Aizvērt programmu"};
-		String[] veidi = {"Velosipēds", "Kalnu velosipēds", "Bērnu velosipēds"};
-		String[] atbilde = {"Jā", "Nē"};
-		ArrayList<Object> riteni = new ArrayList<>();
+		String[] aplikacijas = {"Spēle", "Saziņas lietotne"};
+		// String[] atbilde = {"Jā", "Nē"};
+		ArrayList<Object> lietotnes = new ArrayList<>();
 		
+		
+		
+		do {
+			izvele = (String) JOptionPane.showInputDialog(null, "Izvēlies darbību",
+					"Izvēle", JOptionPane.QUESTION_MESSAGE, null
+					,darbibas, darbibas[0]);
+			if(izvele == null) break;
+			
+			izvelesID = Arrays.asList(darbibas).indexOf(izvele);
+			
+			switch(izvelesID) {
+			
+			case 0:
+				
+				break;
+			
+			case 1:
+				break;
+			
+			case 2:
+				break;
+			
+			case 3:
+				break;
+			
+			case 4:
+				break;
+			
+				
+			}
+			
+		}while(izvelesID != 5);
 		
 	}
 

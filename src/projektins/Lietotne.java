@@ -7,15 +7,15 @@ import java.util.Random;
 	public class Lietotne implements Comparable<Lietotne> {
 	// ATRIBUTI
 		private String nosaukums, izstradatajs;
-		private double versija, cena, novertejums;
+		private double versija, izmers, novertejums;
 		private int lpSkaits;
 	
 	// KONSTRUKTORS
-		public Lietotne(String nosaukums, String izstradatajs, double versija, double cena) {
+		public Lietotne(String nosaukums, String izstradatajs, double versija, double izmers) {
 		this.nosaukums = nosaukums;
 		this.izstradatajs = izstradatajs;
 		this.versija = versija;
-		this.cena = cena;
+		this.izmers = izmers;		//kp šis neiet githubā >:(
 		this.lpSkaits = izvadaLP(); // lejupielades
 		this.novertejums = izvadaNOV();
 	}
@@ -35,8 +35,8 @@ import java.util.Random;
 		return versija;
 	}
 	
-	public Double noteiktCenu() {
-		return cena;
+	public Double noteiktIzmeru() {
+		return izmers;
 	}
 	
 	public int noteiktLP() {
@@ -47,7 +47,7 @@ import java.util.Random;
 		return novertejums;
 	}
 	
-	// generee ar random vertejumu (1.0 - 5.0)
+	// generee ar random novertejumu (1.0 - 5.0)
 	private double izvadaNOV() {
 		return Math.round((rand.nextDouble() * 4 + 1) * 10.0) / 10.0;
 	}
@@ -61,7 +61,7 @@ import java.util.Random;
 		return "Lietotne: " + noteiktNosaukumu()+
 				"\nIzstrādātājs: " + noteiktIzstradataju()+
 				"\nVersija: " + noteiktVersiju()+
-				"\nCena: " + noteiktCenu()+ " €" +
+				"\nCena: " + noteiktIzmeru()+ " €" +
 				"\nNovērtējums: " + noteiktNOV()+ " ★" +
 				"\nLejupielāžu skaits: " + noteiktLP();
 	}
@@ -73,10 +73,10 @@ import java.util.Random;
 		  }
 	}
 	
-	// salidzinasana pec cenas
+	// sakārtošana pec izmēra
 	@Override
 	public int compareTo(Lietotne l) {
-		return this.noteiktCenu().compareTo(l.noteiktCenu());
+		return this.noteiktIzmeru().compareTo(l.noteiktIzmeru());
 	}
 
 }

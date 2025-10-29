@@ -61,7 +61,15 @@ public static int skaitlaParbaude(String zinojums, int min, int max) {
 						aplikacijas, aplikacijas[0]);
 				if (izvele == null)break;
 				
+				switch(izvele) {
 				
+				case "Spēle":
+					break;
+				
+				case "Saziņas lietotne":
+					break;
+				
+				}
 				
 				break;
 			

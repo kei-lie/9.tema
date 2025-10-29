@@ -48,8 +48,8 @@ public static int skaitlaParbaude(String zinojums, int min, int max) {
 		
 		do {
 			izvele = (String) JOptionPane.showInputDialog(null, "Izvēlies darbību",
-					"Izvēle", JOptionPane.QUESTION_MESSAGE, null
-					,darbibas, darbibas[0]);
+					"Izvēle", JOptionPane.QUESTION_MESSAGE, null,
+					darbibas, darbibas[0]);
 			if(izvele == null) break;
 			
 			izvelesID = Arrays.asList(darbibas).indexOf(izvele);
@@ -67,9 +67,11 @@ public static int skaitlaParbaude(String zinojums, int min, int max) {
 				case "Spēle":
 					Random rand = new Random();
 					String[] Kval = {"Augsta", "Viduvēja", "Zema", "Ļoti zema"};
+					String[] Tips = {"Cīņu", "Šausmu", "RPG", "Simulators"};
 					
 					String g = Kval[rand.nextInt(4)];
-					
+					String t = (String)JOptionPane.showInputDialog(null, "Kāds ir spēles tips?",
+							"Informācija", JOptionPane.QUESTION_MESSAGE, null,Tips, Tips[0]);
 					
 					break;
 				

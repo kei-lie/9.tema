@@ -2,6 +2,8 @@ package projektins;
 
 import java.util.Random;
 
+
+
 	public class Lietotne implements Comparable<Lietotne> {
 	// ATRIBUTI
 		private String nosaukums, izstradatajs;
@@ -17,8 +19,10 @@ import java.util.Random;
 		this.lpSkaits = izvadaLP(); // lejupielades
 		this.novertejums = izvadaNOV();
 	}
-
+		
 	// METODES
+	public Random rand = new Random();	//Lai nav jātaisa jauns random katru reizi
+	
 	public String noteiktNosaukumu() {
 		return nosaukums;
 	}
@@ -45,13 +49,11 @@ import java.util.Random;
 	
 	// generee ar random vertejumu (1.0 - 5.0)
 	private double izvadaNOV() {
-		Random rand = new Random();
 		return Math.round((rand.nextDouble() * 4 + 1) * 10.0) / 10.0;
 	}
 	
 	// generee ar random LP skaitu (1 - 1 000 000)
 	private int izvadaLP() {
-		Random rand = new Random();
 		return rand.nextInt(1_000_000) + 1;
 	}
 	

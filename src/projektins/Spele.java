@@ -2,16 +2,32 @@ package projektins;
 
 public class Spele extends Lietotne{
 	//Atribūti
-	private String[] grafiki= {"Augsti", "Vidēji", "Zemi", "Ļoti zemi"};
+	private String grafiki, tips;
 	
-	public Spele(String grafiki, String nosaukums, String izstradatajs, double versija, double izmers) {
+	public Spele(String grafiki, String tips, String nosaukums, String izstradatajs, double versija, double izmers) {
 		super(nosaukums, izstradatajs, versija, izmers);
 		
-		grafiki = kvalitate();
+		this.grafiki = grafiki;
+		this.tips = tips;
 	}
 	
-	public String kvalitate() {
-		return grafiki[rand.nextInt(4)];
+	public String noteiktGrafikus() {
+		return grafiki;
+	}
+	
+	public String noteiktTipu() {
+		return tips;
+	}
+	
+	public String izvadit() {
+		return "Lietotne: " + noteiktNosaukumu()+
+				"\nIzstrādātājs: " + noteiktIzstradataju()+
+				"\nVersija: " + noteiktVersiju()+
+				"\nIzmērs: " + noteiktIzmeru()+ " €" +
+				"\nNovērtējums: " + noteiktNOV()+ " ★" +
+				"\nLejupielāžu skaits: " + noteiktLP()+
+				"\nGrafiku kvalitāte: " + noteiktGrafikus()+
+				"\nSpēles tips" + noteiktTipu();
 	}
 	
 }

@@ -2,6 +2,7 @@ package projektins;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Random;
 
 import javax.swing.JOptionPane;
 
@@ -64,6 +65,12 @@ public static int skaitlaParbaude(String zinojums, int min, int max) {
 				switch(izvele) {
 				
 				case "Spēle":
+					Random rand = new Random();
+					String[] Kval = {"Augsta", "Viduvēja", "Zema", "Ļoti zema"};
+					
+					String g = Kval[rand.nextInt(4)];
+					
+					
 					break;
 				
 				case "Saziņas lietotne":

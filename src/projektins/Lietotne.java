@@ -15,7 +15,7 @@ import java.util.Random;
 		this.nosaukums = nosaukums;
 		this.izstradatajs = izstradatajs;
 		this.versija = versija;
-		this.izmers = izmers;		//kp šis neiet githubā >:(
+		this.izmers = izmers;
 		this.lpSkaits = izvadaLP(); // lejupielades
 		this.novertejums = izvadaNOV();
 	}
@@ -61,7 +61,7 @@ import java.util.Random;
 		return "Lietotne: " + noteiktNosaukumu()+
 				"\nIzstrādātājs: " + noteiktIzstradataju()+
 				"\nVersija: " + noteiktVersiju()+
-				"\nCena: " + noteiktIzmeru()+ " €" +
+				"\nIzmērs: " + noteiktIzmeru()+ " €" +
 				"\nNovērtējums: " + noteiktNOV()+ " ★" +
 				"\nLejupielāžu skaits: " + noteiktLP();
 	}

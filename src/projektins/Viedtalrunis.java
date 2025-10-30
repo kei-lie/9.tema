@@ -43,6 +43,21 @@ public class Viedtalrunis {
 		}
 	}
 	
+	static int ritenaIzvele(ArrayList<Object> lietotnes) {
+		String[] rSaraksts = new String[lietotnes.size()];
+		
+		for(int i = 0; i < rSaraksts.length; i++) {
+			rSaraksts[i] = (((Lietotne)lietotnes.get(i)).noteiktIzstradataju())+" "
+					+(((Lietotne)lietotnes.get(i)).noteiktIzmeru())+" EUR";
+		}
+		
+		String izveletais = (String)JOptionPane.showInputDialog(null, "", "", JOptionPane.QUESTION_MESSAGE, 
+				null, rSaraksts, rSaraksts[0]);
+		
+		return Arrays.asList(rSaraksts).indexOf(izveletais);
+		
+	}
+	
 	public static void main(String[] args) {
 		String izvele;
 		int izvelesID;
@@ -87,7 +102,7 @@ public class Viedtalrunis {
 							"Informācija", JOptionPane.QUESTION_MESSAGE, null,Tips, Tips[0]);
 					
 					String n = virknesParbaude("Kāds ir spēles nosaukums?", "Genshin Impact");
-					String izs = virknesParbaude("Kās ir spēles izstrādātājs?", "Hoyoverse");
+					String izs = virknesParbaude("Kas ir spēles izstrādātājs?", "Hoyoverse");
 					int v = skaitlaParbaude("Lietotnes versija?", 1, 10);
 					int izm = skaitlaParbaude("Lietotnes izmērs?", 1, 50);
 					GB -= izm;
@@ -118,7 +133,7 @@ public class Viedtalrunis {
 					else b = false;
 					
 					String nos = virknesParbaude("Kāds ir spēles nosaukums?", "WhatsApp");
-					String izstr = virknesParbaude("Kās ir spēles izstrādātājs?", "Meta");
+					String izstr = virknesParbaude("Kas ir spēles izstrādātājs?", "Meta");
 					int vers = skaitlaParbaude("Lietotnes versija?", 1, 10);
 					int izmers = skaitlaParbaude("Lietotnes izmērs?", 1, 50);
 					GB -= izmers;

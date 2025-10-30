@@ -4,7 +4,7 @@ public class Spele extends Lietotne{
 	//Atribūti
 	private String grafiki, tips;
 	
-	public Spele(String grafiki, String tips, String nosaukums, String izstradatajs, double versija, double izmers) {
+	public Spele(String grafiki, String tips, String nosaukums, String izstradatajs, int versija, int izmers) {
 		super(nosaukums, izstradatajs, versija, izmers);
 		
 		this.grafiki = grafiki;

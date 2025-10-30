@@ -7,11 +7,11 @@ import java.util.Random;
 	public class Lietotne implements Comparable<Lietotne> {
 	// ATRIBUTI
 		private String nosaukums, izstradatajs;
-		private double versija, izmers, novertejums;
-		private int lpSkaits;
+		private double izmers, novertejums;
+		private int versija, lpSkaits;
 	
 	// KONSTRUKTORS
-		public Lietotne(String nosaukums, String izstradatajs, double versija, double izmers) {
+		public Lietotne(String nosaukums, String izstradatajs, int versija, int izmers) {
 		this.nosaukums = nosaukums;
 		this.izstradatajs = izstradatajs;
 		this.versija = versija;
@@ -67,7 +67,7 @@ import java.util.Random;
 	}
 	
 	// atjaunina lietotni
-	public void atjauninat(double jaunaVersija) {
+	public void atjauninat(int jaunaVersija) {
 		if (jaunaVersija > versija) {
 			  versija = jaunaVersija;
 		  }

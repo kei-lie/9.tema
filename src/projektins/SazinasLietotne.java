@@ -4,7 +4,7 @@ public class SazinasLietotne extends Lietotne{
 	//Atribūti
 		private boolean kamera, kontakti;
 		
-		public SazinasLietotne(boolean kamera, boolean kontakti, String nosaukums, String izstradatajs, double versija, double izmers) {
+		public SazinasLietotne(boolean kamera, boolean kontakti, String nosaukums, String izstradatajs, int versija, int izmers) {
 			super(nosaukums, izstradatajs, versija, izmers);
 			
 		}

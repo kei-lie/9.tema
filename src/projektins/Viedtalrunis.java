@@ -3,12 +3,24 @@ package projektins;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Random;
+import java.util.regex.Pattern;
 
 import javax.swing.JOptionPane;
 
 public class Viedtalrunis {
 	
-public static int skaitlaParbaude(String zinojums, int min, int max) {
+	public static String virknesParbaude(String zinojums, String noklusejums) {
+		String virkne;
+		do {
+			virkne = JOptionPane.showInputDialog(zinojums, noklusejums);
+			if(virkne == null) return null;
+			
+			virkne = virkne.trim();
+		}while(!Pattern.matches("^[\\p{L} .]+$", virkne));
+		return virkne;
+	}
+	
+	public static int skaitlaParbaude(String zinojums, int min, int max) {
 		
 		int skaitlis;
 		
@@ -34,6 +46,7 @@ public static int skaitlaParbaude(String zinojums, int min, int max) {
 	public static void main(String[] args) {
 		String izvele;
 		int izvelesID;
+		String[] atbilde = {"Jā", "Nē"};
 		String[] darbibas = {"Novilkt aplikāciju", "Izdzēst aplikāciju",
 				"Aplikāciju saraksts", "Izsaukt metodi",
 				"Aizvērt programmu"};
@@ -73,9 +86,45 @@ public static int skaitlaParbaude(String zinojums, int min, int max) {
 					String t = (String)JOptionPane.showInputDialog(null, "Kāds ir spēles tips?",
 							"Informācija", JOptionPane.QUESTION_MESSAGE, null,Tips, Tips[0]);
 					
+					String n = virknesParbaude("Kāds ir spēles nosaukums?", "Genshin Impact");
+					String izs = virknesParbaude("Kās ir spēles izstrādātājs?", "Hoyoverse");
+					int v = skaitlaParbaude("Lietotnes versija?", 1, 10);
+					int izm = skaitlaParbaude("Lietotnes izmērs?", 1, 50);
+					GB -= izm;
+					
+					lietotnes.add(new Spele(g, t, n, izs, v, izm));
+					
 					break;
 				
 				case "Saziņas lietotne":
+					
+					boolean a, b;
+					izvele = (String)JOptionPane.showInputDialog(null, "Vai atļaut piekļuvi kamerai?",
+							"Izvēle", JOptionPane.QUESTION_MESSAGE, null,
+							atbilde, atbilde[0]);
+					if(izvele == null) break;
+					
+					if(izvele == "Jā")
+						a = true;
+					else a = false;
+					
+					izvele = (String)JOptionPane.showInputDialog(null, "Vai atļaut piekļuvi kontaktiem?",
+							"Izvēle", JOptionPane.QUESTION_MESSAGE, null,
+							atbilde, atbilde[0]);
+					if(izvele == null) break;
+					
+					if(izvele == "Jā")
+						b = true;
+					else b = false;
+					
+					String nos = virknesParbaude("Kāds ir spēles nosaukums?", "WhatsApp");
+					String izstr = virknesParbaude("Kās ir spēles izstrādātājs?", "Meta");
+					int vers = skaitlaParbaude("Lietotnes versija?", 1, 10);
+					int izmers = skaitlaParbaude("Lietotnes izmērs?", 1, 50);
+					GB -= izmers;
+					
+					lietotnes.add(new SazinasLietotne(a, b, nos, izstr, vers, izmers));
+					
 					break;
 				
 				}

@@ -132,8 +132,8 @@ public class Viedtalrunis {
 						b = true;
 					else b = false;
 					
-					String nos = virknesParbaude("Kāds ir spēles nosaukums?", "WhatsApp");
-					String izstr = virknesParbaude("Kas ir spēles izstrādātājs?", "Meta");
+					String nos = virknesParbaude("Kāds ir lietotnes nosaukums?", "WhatsApp");
+					String izstr = virknesParbaude("Kas ir lietotnes izstrādātājs?", "Meta");
 					int vers = skaitlaParbaude("Lietotnes versija?", 1, 10);
 					int izmers = skaitlaParbaude("Lietotnes izmērs?", 1, 50);
 					GB -= izmers;

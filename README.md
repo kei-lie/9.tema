@@ -8,7 +8,7 @@
 - [ ] Ievadīt iespēju izveidot, dzēst, un apskatīt jaunus klašu objektus, kā arī izsaukt metodes.
 ### Virsklase
 - [x] Izveidot klasi "**Lietotne**"
-- [ ] Definēt vairākus raksturojošus atribūtus un metodes
+- [x] Definēt vairākus raksturojošus atribūtus un metodes
 ### Apakšklases
 - [x] Izveidot klases "**Spele**" & "**SazinasLietotne**"
-- [ ] Definēt vairākus raksturojošus atribūtus un metodes
+- [x] Definēt vairākus raksturojošus atribūtus un metodes

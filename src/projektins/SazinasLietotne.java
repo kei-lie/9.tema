@@ -21,7 +21,7 @@ public class SazinasLietotne extends Lietotne{
 			return "Lietotne: " + noteiktNosaukumu()+
 					"\nIzstrādātājs: " + noteiktIzstradataju()+
 					"\nVersija: " + noteiktVersiju()+
-					"\nIzmērs: " + noteiktIzmeru()+ " €" +
+					"\nIzmērs: " + noteiktIzmeru()+
 					"\nNovērtējums: " + noteiktNOV()+ " ★" +
 					"\nLejupielāžu skaits: " + noteiktLP()+
 					"\nAtļauta kamera? " + Kam()+

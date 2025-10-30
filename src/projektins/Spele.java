@@ -23,11 +23,11 @@ public class Spele extends Lietotne{
 		return "Lietotne: " + noteiktNosaukumu()+
 				"\nIzstrādātājs: " + noteiktIzstradataju()+
 				"\nVersija: " + noteiktVersiju()+
-				"\nIzmērs: " + noteiktIzmeru()+ " €" +
+				"\nIzmērs: " + noteiktIzmeru()+
 				"\nNovērtējums: " + noteiktNOV()+ " ★" +
 				"\nLejupielāžu skaits: " + noteiktLP()+
 				"\nGrafiku kvalitāte: " + noteiktGrafikus()+
-				"\nSpēles tips" + noteiktTipu();
+				"\nSpēles tips: " + noteiktTipu();
 	}
 	
 }

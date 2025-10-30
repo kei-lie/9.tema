@@ -6,6 +6,9 @@ import java.util.Random;
 import java.util.regex.Pattern;
 
 import javax.swing.JOptionPane;
+import javax.swing.JTextArea;
+import javax.swing.JScrollPane;
+import javax.swing.ScrollPaneConstants;
 
 public class Viedtalrunis {
 	
@@ -43,7 +46,7 @@ public class Viedtalrunis {
 		}
 	}
 	
-	static int ritenaIzvele(ArrayList<Object> lietotnes) {
+	static int aplikacijasIzvele(ArrayList<Object> lietotnes) {
 		String[] rSaraksts = new String[lietotnes.size()];
 		
 		for(int i = 0; i < rSaraksts.length; i++) {
@@ -58,15 +61,16 @@ public class Viedtalrunis {
 		
 	}
 	
+	
 	public static void main(String[] args) {
+		Random rand = new Random();	//Lai nav jātaisa jauns random katru reizi
 		String izvele;
 		int izvelesID;
 		String[] atbilde = {"Jā", "Nē"};
-		String[] darbibas = {"Novilkt aplikāciju", "Izdzēst aplikāciju",
-				"Aplikāciju saraksts", "Izsaukt metodi",
+		String[] darbibas = {"Novilkt aplikāciju", "Aplikāciju saraksts",
+				"Uzspēlēt spēli", "Nosūtīt ziņu",
 				"Aizvērt programmu"};
 		String[] aplikacijas = {"Spēle", "Saziņas lietotne"};
-		// String[] atbilde = {"Jā", "Nē"};
 		ArrayList<Object> lietotnes = new ArrayList<>();
 		
 		int GB;
@@ -93,7 +97,6 @@ public class Viedtalrunis {
 				switch(izvele) {
 				
 				case "Spēle":
-					Random rand = new Random();
 					String[] Kval = {"Augsta", "Viduvēja", "Zema", "Ļoti zema"};
 					String[] Tips = {"Cīņu", "Šausmu", "RPG", "Simulators"};
 					
@@ -113,24 +116,25 @@ public class Viedtalrunis {
 				
 				case "Saziņas lietotne":
 					
-					boolean a, b;
-					izvele = (String)JOptionPane.showInputDialog(null, "Vai atļaut piekļuvi kamerai?",
+					String atb = (String)JOptionPane.showInputDialog(null, "Vai atļaut piekļuvi kamerai?",
 							"Izvēle", JOptionPane.QUESTION_MESSAGE, null,
 							atbilde, atbilde[0]);
-					if(izvele == null) break;
+					if(atb == null) break;
 					
-					if(izvele == "Jā")
+					boolean a;
+					if(atb == "Jā") {
 						a = true;
-					else a = false;
+					}else a = false;
 					
-					izvele = (String)JOptionPane.showInputDialog(null, "Vai atļaut piekļuvi kontaktiem?",
+					String atbil = (String)JOptionPane.showInputDialog(null, "Vai atļaut piekļuvi kontaktiem?",
 							"Izvēle", JOptionPane.QUESTION_MESSAGE, null,
 							atbilde, atbilde[0]);
-					if(izvele == null) break;
+					if(atbil == null) break;
 					
-					if(izvele == "Jā")
+					boolean b;
+					if(atbil == "Jā") {
 						b = true;
-					else b = false;
+					}else b = false;
 					
 					String nos = virknesParbaude("Kāds ir lietotnes nosaukums?", "WhatsApp");
 					String izstr = virknesParbaude("Kas ir lietotnes izstrādātājs?", "Meta");
@@ -141,33 +145,95 @@ public class Viedtalrunis {
 					lietotnes.add(new SazinasLietotne(a, b, nos, izstr, vers, izmers));
 					
 					break;
+				}
+				break;
 				
+			case 1:
+				
+				if(lietotnes.size() > 0) { 
+					String str = "Aplikāciju skaits: " + lietotnes.size()+
+							"\n_________________________________\n";
+					for(int i=0; i<lietotnes.size(); i++) {
+						str += ((Lietotne)lietotnes.get(i)).izvadit()+
+							"\n_________________________________\n";
+					}
+					
+					JTextArea ta = new JTextArea (str, 10, 40);
+					ta.setEditable(false);
+					JScrollPane sp = new JScrollPane(ta);
+					sp.setVerticalScrollBarPolicy(
+							ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+					JOptionPane.showMessageDialog(null, sp, "Aplikāciju saraksts",
+							JOptionPane.PLAIN_MESSAGE);
+				} else {
+					JOptionPane.showMessageDialog(null, "Nav novilkta neviena aplikācija.",
+							"Kļūda", JOptionPane.ERROR_MESSAGE);
+					break;
 				}
 				
 				break;
 			
-			case 1:
-				
-				break;
-			
 			case 2:
+				// UZSPĒLĒT SPĒLI
+				ArrayList<Spele> speles = new ArrayList<>();
+				for (Object o : lietotnes) {
+					if (o instanceof Spele) speles.add((Spele)o);
+				}
+
+				if (speles.isEmpty()) {
+					JOptionPane.showMessageDialog(null, "Nav novilkta neviena aplikācija.", "Informācija", JOptionPane.INFORMATION_MESSAGE);
+					break;
+				}
+
+				String[] spelesNos = new String[speles.size()];
+				for (int i = 0; i < speles.size(); i++) {
+					spelesNos[i] = speles.get(i).noteiktNosaukumu();
+				}
+
+				String speleIzv = (String)JOptionPane.showInputDialog(null, "Izvēlies spēli, kuru spēlēt:",
+						"Spēles izvēle", JOptionPane.QUESTION_MESSAGE, null, spelesNos, spelesNos[0]);
+				if (speleIzv == null) break;
 				
+				boolean uzv = rand.nextBoolean();
+
+				if (uzv)
+					JOptionPane.showMessageDialog(null, "Tu uzvarēji spēlē " + speleIzv + "!");
+				else
+					JOptionPane.showMessageDialog(null, "Tu zaudēji spēlē " + speleIzv + ".. :(");
 				break;
-			
+
 			case 3:
-				
+				// NOSŪTĪT ZIŅU
+				if (lietotnes.isEmpty()) {
+					JOptionPane.showMessageDialog(null, "Nav novilkta neviena aplikācija.", "Informācija", JOptionPane.INFORMATION_MESSAGE);
+					break;
+				}
+
+				String[] nosaukumi = new String[lietotnes.size()];
+				for (int i = 0; i < lietotnes.size(); i++) {
+					nosaukumi[i] = ((Lietotne)lietotnes.get(i)).noteiktNosaukumu();
+				}
+
+				String app = (String)JOptionPane.showInputDialog(null, "Izvēlies lietotni, ar kuru sūtīt ziņu:",
+						"Ziņas sūtīšana", JOptionPane.QUESTION_MESSAGE, null, nosaukumi, nosaukumi[0]);
+				if (app == null) break;
+
+				String kam = virknesParbaude("Kam sūtīt ziņu?", "Sofija");
+				if (kam == null) break;
+				String zina = virknesParbaude("Kādu ziņu sūtīsi?", "ejam uz hesiti");
+				if (zina == null) break;
+
+				JOptionPane.showMessageDialog(null, "Ar lietotni \"" + app + "\" tika nosūtīta ziņa:\nAdresāts: " + kam + "\nZiņa: " + zina);
 				break;
-			
+
 			case 4:
 				JOptionPane.showMessageDialog(null, "Programma apturēta", "Apturēta",
 						JOptionPane.PLAIN_MESSAGE);
 				break;
-			
-				
 			}
 			
-		}while(izvelesID != 4);
+			
+		} while(izvelesID != 4);
 		
 	}
-
 }

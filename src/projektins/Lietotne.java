@@ -61,7 +61,7 @@ import java.util.Random;
 		return "Lietotne: " + noteiktNosaukumu()+
 				"\nIzstrādātājs: " + noteiktIzstradataju()+
 				"\nVersija: " + noteiktVersiju()+
-				"\nIzmērs: " + noteiktIzmeru()+ " €" +
+				"\nIzmērs: " + noteiktIzmeru()+
 				"\nNovērtējums: " + noteiktNOV()+ " ★" +
 				"\nLejupielāžu skaits: " + noteiktLP();
 	}

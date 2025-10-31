@@ -50,11 +50,11 @@ public class Viedtalrunis {
 		String[] rSaraksts = new String[lietotnes.size()];
 		
 		for(int i = 0; i < rSaraksts.length; i++) {
-			rSaraksts[i] = (((Lietotne)lietotnes.get(i)).noteiktIzstradataju())+" "
-					+(((Lietotne)lietotnes.get(i)).noteiktIzmeru())+" EUR";
+			rSaraksts[i] = (((Lietotne)lietotnes.get(i)).noteiktNosaukumu())+" "
+					+(((Lietotne)lietotnes.get(i)).noteiktVersiju());
 		}
 		
-		String izveletais = (String)JOptionPane.showInputDialog(null, "", "", JOptionPane.QUESTION_MESSAGE, 
+		String izveletais = (String)JOptionPane.showInputDialog(null, "Izvēlies aplikāciju", "Izvēle", JOptionPane.QUESTION_MESSAGE, 
 				null, rSaraksts, rSaraksts[0]);
 		
 		return Arrays.asList(rSaraksts).indexOf(izveletais);
@@ -67,7 +67,7 @@ public class Viedtalrunis {
 		String izvele;
 		int izvelesID;
 		String[] atbilde = {"Jā", "Nē"};
-		String[] darbibas = {"Novilkt aplikāciju", "Aplikāciju saraksts",
+		String[] darbibas = {"Novilkt aplikāciju", "Dzēst aplikāciju","Aplikāciju saraksts",
 				"Uzspēlēt spēli", "Nosūtīt ziņu",
 				"Aizvērt programmu"};
 		String[] aplikacijas = {"Spēle", "Saziņas lietotne"};
@@ -108,10 +108,12 @@ public class Viedtalrunis {
 					String izs = virknesParbaude("Kas ir spēles izstrādātājs?", "Hoyoverse");
 					int v = skaitlaParbaude("Lietotnes versija?", 1, 10);
 					int izm = skaitlaParbaude("Lietotnes izmērs?", 1, 50);
+					if(izm > GB) {JOptionPane.showMessageDialog(null, "Nepietiek atmiņas! Dabū jaunu telefonu.", "Kļūda", 
+							JOptionPane.ERROR_MESSAGE);
+					}else {
 					GB -= izm;
-					
 					lietotnes.add(new Spele(g, t, n, izs, v, izm));
-					
+					}
 					break;
 				
 				case "Saziņas lietotne":
@@ -149,6 +151,21 @@ public class Viedtalrunis {
 				break;
 				
 			case 1:
+				if(lietotnes.size() > 0) { 
+					int app = aplikacijasIzvele(lietotnes);
+					
+					lietotnes.remove(app);
+					JOptionPane.showMessageDialog(null, "Veiksmīgi izdzēsta aplikācija",
+							"Paziņojums", JOptionPane.INFORMATION_MESSAGE);
+				}else {
+					JOptionPane.showMessageDialog(null, "Nav lietotņu ko dzēst",
+							"Kļūda", JOptionPane.ERROR_MESSAGE);
+					break;
+				}
+				
+				break;
+				
+			case 2:
 				
 				if(lietotnes.size() > 0) { 
 					String str = "Aplikāciju skaits: " + lietotnes.size()+
@@ -173,7 +190,7 @@ public class Viedtalrunis {
 				
 				break;
 			
-			case 2:
+			case 3:
 				// UZSPĒLĒT SPĒLI
 				ArrayList<Spele> speles = new ArrayList<>();
 				for (Object o : lietotnes) {
@@ -202,7 +219,7 @@ public class Viedtalrunis {
 					JOptionPane.showMessageDialog(null, "Tu zaudēji spēlē " + speleIzv + ".. :(");
 				break;
 
-			case 3:
+			case 4:
 				// NOSŪTĪT ZIŅU
 				if (lietotnes.isEmpty()) {
 					JOptionPane.showMessageDialog(null, "Nav novilkta neviena aplikācija.", "Informācija", JOptionPane.INFORMATION_MESSAGE);
@@ -226,14 +243,14 @@ public class Viedtalrunis {
 				JOptionPane.showMessageDialog(null, "Ar lietotni \"" + app + "\" tika nosūtīta ziņa:\nAdresāts: " + kam + "\nZiņa: " + zina);
 				break;
 
-			case 4:
+			case 5:
 				JOptionPane.showMessageDialog(null, "Programma apturēta", "Apturēta",
 						JOptionPane.PLAIN_MESSAGE);
 				break;
 			}
 			
 			
-		} while(izvelesID != 4);
+		} while(izvelesID != 5);
 		
 	}
 }

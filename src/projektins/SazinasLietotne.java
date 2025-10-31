@@ -7,6 +7,8 @@ public class SazinasLietotne extends Lietotne{
 		public SazinasLietotne(boolean kamera, boolean kontakti, String nosaukums, String izstradatajs, int versija, int izmers) {
 			super(nosaukums, izstradatajs, versija, izmers);
 			
+			this.kamera = kamera;
+			this.kontakti = kontakti;
 		}
 		
 		public boolean Kam() {

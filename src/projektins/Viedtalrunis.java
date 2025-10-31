@@ -98,7 +98,7 @@ public class Viedtalrunis {
 				
 				case "Spēle":
 					String[] Kval = {"Augsta", "Viduvēja", "Zema", "Ļoti zema"};
-					String[] Tips = {"Cīņu", "Šausmu", "RPG", "Simulators"};
+					String[] Tips = {"RPG", "Šausmu", "Cīņu", "Simulators"};
 					
 					String g = Kval[rand.nextInt(4)];
 					String t = (String)JOptionPane.showInputDialog(null, "Kāds ir spēles tips?",

@@ -75,7 +75,7 @@ public class Viedtalrunis {
 		
 		int GB;
 		do {
-			GB = skaitlaParbaude("Kāds ir telefona izmērs?", 64, 1024);
+			GB = skaitlaParbaude("Kāds ir telefona atmiņas izmērs?", 64, 1024);
 		}while(GB == -1);
 		
 		do {
@@ -142,9 +142,14 @@ public class Viedtalrunis {
 					String izstr = virknesParbaude("Kas ir lietotnes izstrādātājs?", "Meta");
 					int vers = skaitlaParbaude("Lietotnes versija?", 1, 10);
 					int izmers = skaitlaParbaude("Lietotnes izmērs?", 1, 50);
-					GB -= izmers;
 					
-					lietotnes.add(new SazinasLietotne(a, b, nos, izstr, vers, izmers));
+					if(izmers > GB) {JOptionPane.showMessageDialog(null, "Nepietiek atmiņas! Dabū jaunu telefonu.", "Kļūda", 
+							JOptionPane.ERROR_MESSAGE);
+					}else {
+						GB -= izmers;
+						lietotnes.add(new SazinasLietotne(a, b, nos, izstr, vers, izmers));
+					}
+					
 					
 					break;
 				}

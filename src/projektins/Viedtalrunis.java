@@ -226,18 +226,23 @@ public class Viedtalrunis {
 
 			case 4:
 				// NOSŪTĪT ZIŅU
-				if (lietotnes.isEmpty()) {
-					JOptionPane.showMessageDialog(null, "Nav novilkta neviena aplikācija.", "Informācija", JOptionPane.INFORMATION_MESSAGE);
+				
+				ArrayList<SazinasLietotne> sazina = new ArrayList<>();
+				for (Object o : lietotnes) {
+					if (o instanceof SazinasLietotne) sazina.add((SazinasLietotne)o);
+				}
+				if (sazina.isEmpty()) {
+					JOptionPane.showMessageDialog(null, "Nav novilkta neviena saziņas lietotne.", "Informācija", JOptionPane.INFORMATION_MESSAGE);
 					break;
 				}
 
-				String[] nosaukumi = new String[lietotnes.size()];
-				for (int i = 0; i < lietotnes.size(); i++) {
-					nosaukumi[i] = ((Lietotne)lietotnes.get(i)).noteiktNosaukumu();
+				String[] sazLietNos = new String[sazina.size()];
+				for (int i = 0; i < sazina.size(); i++) {
+					sazLietNos[i] = sazina.get(i).noteiktNosaukumu();
 				}
 
 				String app = (String)JOptionPane.showInputDialog(null, "Izvēlies lietotni, ar kuru sūtīt ziņu:",
-						"Ziņas sūtīšana", JOptionPane.QUESTION_MESSAGE, null, nosaukumi, nosaukumi[0]);
+						"Ziņas sūtīšana", JOptionPane.QUESTION_MESSAGE, null, sazLietNos, sazLietNos[0]);
 				if (app == null) break;
 
 				String kam = virknesParbaude("Kam sūtīt ziņu?", "Sofija");
